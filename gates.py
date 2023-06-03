@@ -14,14 +14,12 @@ or_dataset = [
     [1, 1, 1],
 ]
 
-nand_dataset = [
-    [0, 0, 1],
-    [0,1,1],
-    [1,0,1],
-    [1,1,0]
-]
+nand_dataset = [[0, 0, 1], [0, 1, 1], [1, 0, 1], [1, 1, 0]]
+
+
 def sigmoid(x):
-    return 1/(1+math.exp(-x))
+    return 1 / (1 + math.exp(-x))
+
 
 def train(dataset):
     w1 = random.random()
@@ -29,8 +27,6 @@ def train(dataset):
     b = random.random()
     absolute = 0.01
     rate = 0.01
-
-
 
     def cost(w1, w2, b):
         result = 0
@@ -41,15 +37,14 @@ def train(dataset):
 
         return result / len(dataset)
 
-    lowest = cost(w1,w2, b)
+    lowest = cost(w1, w2, b)
 
     for n in range(1, 100000):
         c = cost(w1, w2, b)
-        dw1 = (cost(w1 + absolute, w2,b) - c) / absolute
-        dw2 = (cost(w1, w2 + absolute,b) - c) / absolute
-        
-        db = (cost(w1, w2,b + absolute) - c) / absolute
-        
+        dw1 = (cost(w1 + absolute, w2, b) - c) / absolute
+        dw2 = (cost(w1, w2 + absolute, b) - c) / absolute
+        db = (cost(w1, w2, b + absolute) - c) / absolute
+
         if lowest > c:
             lowest = c
             opw1 = w1
@@ -63,10 +58,12 @@ def train(dataset):
 
     return [w1, w2, b]
 
+
 def check(res):
-    for x in [0,1]:
-        for y in [0,1]:
+    for x in [0, 1]:
+        for y in [0, 1]:
             print(f"{x} | {y} | {round(sigmoid(res[0]*x+res[1]*y+res[2]))}")
+
 
 print("And Gate")
 check(train(and_dataset))
@@ -75,4 +72,5 @@ check(train(and_dataset))
 print("Or Gate")
 check(train(or_dataset))
 
-
+print("Nand Gate")
+check(train(nand_dataset))
