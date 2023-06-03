@@ -66,7 +66,7 @@ def train(dataset):
 def check(res):
     for x in [0,1]:
         for y in [0,1]:
-            print(f"{x} | {y} | {sigmoid(res[0]*x+res[1]*y+res[2])}")
+            print(f"{x} | {y} | {round(sigmoid(res[0]*x+res[1]*y+res[2]))}")
 
 print("And Gate")
 check(train(and_dataset))
