@@ -1,5 +1,3 @@
-import random
-
 dataset = [
     [1,3],
     [2,6],
