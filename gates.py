@@ -56,7 +56,7 @@ def train(dataset):
         w2 -= rate * dw2
         b -= rate * db
 
-    return [w1, w2, b]
+    return [opw1, opw2, opb]
 
 
 def check(res):
